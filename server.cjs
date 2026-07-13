@@ -1,5 +1,9 @@
 const express = require("express");
+const cors = require("cors");
+const fetch = require("node-fetch");
+
 const app = express();
+app.use(cors());
 
 app.get("/", async (req, res) => {
   const targetUrl = req.query.url;
@@ -14,4 +18,6 @@ app.get("/", async (req, res) => {
   }
 });
 
-app.listen(3000);
+app.listen(3000, () => {
+  console.log("Proxy running on port 3000");
+});
