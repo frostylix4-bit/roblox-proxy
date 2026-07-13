@@ -1,6 +1,5 @@
 const express = require("express");
 const cors = require("cors");
-const fetch = require("node-fetch");
 
 const app = express();
 app.use(cors());
@@ -10,7 +9,7 @@ app.get("/", async (req, res) => {
   if (!targetUrl) return res.status(400).send("Missing url param");
 
   try {
-    const response = await fetch(targetUrl);
+    const response = await fetch(targetUrl); // ⭐ native fetch
     const text = await response.text();
     res.send(text);
   } catch (err) {
